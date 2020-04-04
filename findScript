@@ -1,0 +1,3 @@
+#!/usr/bin/bash
+
+find . -name node_modules -prune -o -name .idea -prune -o -name package* -prune -o -type d -name .git -prune -o -name LIC* -prune -o -type f -exec file -i '{}' \; | grep us-ascii | sed 's/\(.*\):.*/\1/' | xargs -d '\n' grep -rn10 $1
