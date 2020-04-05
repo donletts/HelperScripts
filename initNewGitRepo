@@ -1,0 +1,11 @@
+#!/usr/bin/bash
+
+name=`basename $PWD`
+
+git init
+wget https://raw.githubusercontent.com/github/gitignore/master/Node.gitignore; rm Node.gitignore.1; mv Node.gitignore .gitignore
+git add .
+git remote add origin git@github.com:donletts/$name.git
+git status
+git commit -m "initial commit"
+git push -u origin master
