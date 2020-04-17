@@ -19,7 +19,13 @@ if [ -z "${gitPush}" ]
 then
 	echo "Success"
 else
-	rm -rf .git
 	echo "Failed to push, make sure remote repo exists"
+	echo "would you like to remove the newly created .git folder? (y/n)"
+	read answer
+	if [ $answer == "y" ] || [ $answer == "Y" ]
+	then
+		rm -rf .git
+	fi
+	
 	exit 1
 fi
