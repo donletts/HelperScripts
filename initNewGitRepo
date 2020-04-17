@@ -8,4 +8,18 @@ git add .
 git remote add origin git@github.com:donletts/$name.git
 git status
 git commit -m "initial commit"
-git push -u origin master
+git push -u origin master >& pushResult.txt
+
+cat pushResult.txt
+
+gitPush=`cat pushResult.txt | grep ERROR`
+
+echo $gitPush
+if [ -z "${gitPush}" ]
+then
+	echo "Success"
+else
+	rm -rf .git
+	echo "Failed to push, make sure remote repo exists"
+	exit 1
+fi
